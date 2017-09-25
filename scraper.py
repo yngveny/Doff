@@ -20,27 +20,16 @@ def scrape_dof(url):
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
-        b = row.cssselect("a:link")
-        link = b[0]
-        #print(a[0].text.encode("utf-8"))
-        header = row.cssselect("div.notice-search-item-header")
-        title2 = header[0].text
-        #item_left = row.cssselect("div")
-        #company = item_left[0].text
-        #print(item_left[0].text.encode("utf-8"))
         
-        #repeat process for <span class="right-col"> 
-        #item_right = row.cssselect("div.right-col")
-        #ref = item_right[0].text
-        #date = item_right[1].text
+        for div in row
+            print(div.text_content())        
         
-        #record['URL'] = url
+        
         record['Title'] = title
         record['Link'] = link
         #record['Reference'] = ref
         #record['Company'] = company
         
-        #print record, '------------'
         # Finally, save the record to the datastore - 'Name' is our unique key
         scraperwiki.sqlite.save(["Title"], record)
         
