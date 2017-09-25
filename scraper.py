@@ -26,7 +26,7 @@ def scrape_dof(url):
         
         
         record['Title'] = title
-        record['Link'] = link
+        #record['Link'] = link
         #record['Reference'] = ref
         #record['Company'] = company
         
