@@ -17,7 +17,7 @@ def scrape_dof(url):
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
         print(a[0].text.encode("utf-8"))
-        if(a[1])
+        if a[1]
             print(a[1].text.encode("utf-8"))
             company = a[1].text
         
