@@ -20,7 +20,8 @@ def scrape_dof(url):
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
-        link = a[0].link
+        b = row.cssselect("a:link")
+        link = b[0]
         #print(a[0].text.encode("utf-8"))
         header = row.cssselect("div.notice-search-item-header")
         title2 = header[0].text
