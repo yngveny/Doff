@@ -21,7 +21,7 @@ def scrape_dof(url):
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
         #print(a[0].text.encode("utf-8"))
-        header = row.cssselect("notice-search-item-header")
+        header = row.cssselect("div.notice-search-item-header")
         title2 = header[0].text
         #item_left = row.cssselect("div")
         #company = item_left[0].text
