@@ -22,7 +22,7 @@ def scrape_dof(url):
         title = a[0].text
         
         for div in row.cssselect("div"):
-            print(div.text_content())        
+            print(div.text_content()encode("utf-8"))        
         
         
         record['Title'] = title
