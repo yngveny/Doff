@@ -9,12 +9,12 @@ def scrape_dof(url):
     
     #print html
     root = lxml.html.fromstring(html)
-    print root.find_class("div.notice-search-item")
+    #print root.find_class("div.notice-search-item")
         
     #line below selects all <div class="notice-search-item">
     rows = root.cssselect("div.notice-search-item")
     for row in rows:
-        #print row.find_class("div.notice-search-item")
+        print row.text_content():
         # Set up our data record - we'll need it later
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
