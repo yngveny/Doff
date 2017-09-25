@@ -11,16 +11,16 @@ def scrape_dof(url):
     #line below selects all <div class="notice-search-item">
     rows = root.cssselect("div.notice-search-item")
     for row in rows:
-        #print row
+        print row
         # Set up our data record - we'll need it later
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
-        print(a[0].text.encode("utf-8"))
+        #print(a[0].text.encode("utf-8"))
         
         item_left = row.cssselect("div")
         company = item_left[0].text
-        print(item_left[0].text.encode("utf-8"))
+        #print(item_left[0].text.encode("utf-8"))
         
         #repeat process for <span class="right-col"> 
         #item_right = row.cssselect("div.right-col")
