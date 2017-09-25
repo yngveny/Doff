@@ -22,7 +22,7 @@ def scrape_dof(url):
             print(a.get('href'))
             n = n+1
         link = row.cssselect("a")
-        link1 = link[0].text_content()
+        link1 = link[0].get('href')
         
         element = row.cssselect("div")
         title = element[1].text_content()
