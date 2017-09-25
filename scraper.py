@@ -44,3 +44,4 @@ for url in doflist:
     fullurl = 'http://'+url
     print 'scraping ', fullurl
     scrape_dof(fullurl)
+    print 'and done'
