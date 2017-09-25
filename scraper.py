@@ -5,7 +5,7 @@ import lxml.html
 # create a new function, which gets passed a variable we're going to call 'url'
 def scrape_dof(url):
     html = scraperwiki.scrape(url)
-    print html
+    #print html
     root = lxml.html.fromstring(html)
     #line below selects all <div class="notice-search-item">
     rows = root.cssselect("div.notice-search-item")
