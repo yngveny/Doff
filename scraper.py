@@ -19,7 +19,7 @@ def scrape_dof(url):
         print(a[0].text.encode("utf-8"))
         
         item_left = row.cssselect("div.left-col")
-        company = a[0].item_left
+        company = item_left[0].text
         
         #repeat process for <span class="right-col"> 
         item_right = row.cssselect("div.right-col")
