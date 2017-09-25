@@ -20,15 +20,18 @@ def scrape_dof(url):
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
+        
         n = 0
         for div in row.cssselect("div"):
             print(div.text_content().encode("utf-8"))        
             print(n)
             n = n+1
-        
+            
+        element = row.cssselect("div")
+        link = element[0].text_content().encode("utf-8")
         
         record['Title'] = title
-        #record['Link'] = link
+        record['Link'] = link
         #record['Reference'] = ref
         #record['Company'] = company
         
