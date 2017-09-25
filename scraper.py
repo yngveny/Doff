@@ -18,7 +18,7 @@ def scrape_dof(url):
         company = a[1].text
         
         #repeat process for <span class="right-col"> 
-        item_right = row.cssselect("right-col")
+        item_right = row.cssselect("div.right-col")
         ref = item_right[0].text
         date = item_right[1].text
         
