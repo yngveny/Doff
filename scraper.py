@@ -18,13 +18,13 @@ def scrape_dof(url):
         title = a[0].text
         print(a[0].text.encode("utf-8"))
         
-        item_left = row.cssselect("div.left-col")
+        item_left = row.cssselect("div")
         company = item_left[0].text
         print(item_left[0].text.encode("utf-8"))
         
         #repeat process for <span class="right-col"> 
-        item_right = row.cssselect("div.right-col")
-        ref = item_right[0].text
+        #item_right = row.cssselect("div.right-col")
+        #ref = item_right[0].text
         #date = item_right[1].text
         
         #record['URL'] = url
