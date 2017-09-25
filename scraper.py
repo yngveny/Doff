@@ -1,24 +1,38 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
+import scraperwiki
+import urlparse
+import lxml.html
 
-# import scraperwiki
-# import lxml.html
-#
-# # Read in a page
-# html = scraperwiki.scrape("http://foo.com")
-#
-# # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
-#
-# # Write out to the sqlite database using scraperwiki library
-# scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
-#
-# # An arbitrary query against the database
-# scraperwiki.sql.select("* from data where 'name'='peter'")
-
-# You don't have to do things with the ScraperWiki and lxml libraries.
-# You can use whatever libraries you want: https://morph.io/documentation/python
-# All that matters is that your final data is written to an SQLite database
-# called "data.sqlite" in the current working directory which has at least a table
-# called "data".
+# create a new function, which gets passed a variable we're going to call 'url'
+def scrape_dof(url):
+    html = scraperwiki.scrape(url)
+    print html
+    root = lxml.html.fromstring(html)
+    #line below selects all <div class="notice-search-item">
+    rows = root.cssselect("div.notice-search-item")
+    for row in rows:
+        #print row
+        # Set up our data record - we'll need it later
+        record = {}
+        a = row.cssselect("a") #grab all <a> tags within our <div>
+        title = a[0].text
+        company = a[1].text
+        
+        #repeat process for <span class="right-col"> 
+        item_right = row.cssselect("right-col")
+        ref = item_right[0].text
+        date = item_right[1].text
+        
+        #record['URL'] = url
+        record['Title'] = title
+        record['ref'] = reference
+        record['company'] = company
+        
+        print record, '------------'
+        # Finally, save the record to the datastore - 'Name' is our unique key
+        scraperwiki.sqlite.save(["Title"], record)
+        
+doflist = ['www.doffin.no/Notice?query=&PageNumber=1&PageSize=10&OrderingType=0&OrderingDirection=1&RegionId=&CountyId=&MunicipalityId=&IsAdvancedSearch=false&location=&NoticeType=3&PublicationType=&IncludeExpired=false&Cpvs=&EpsReferenceNr=&DeadlineFromDate=&DeadlineToDate=&PublishedFromDate=&PublishedToDate=']
+for url in doflist:
+    fullurl = 'http://'+url
+    print 'scraping ', fullurl
+    scrape_dof(fullurl)
