@@ -17,9 +17,9 @@ def scrape_dof(url):
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
         print(a[0].text.encode("utf-8"))
-        if a[1]
-            print(a[1].text.encode("utf-8"))
-            company = a[1].text
+        
+        item_left = row.cssselect("div.left-col")
+        company = a[0].item_left
         
         #repeat process for <span class="right-col"> 
         item_right = row.cssselect("div.right-col")
@@ -29,7 +29,7 @@ def scrape_dof(url):
         #record['URL'] = url
         record['Title'] = title
         record['Reference'] = ref
-        #record['Company'] = company
+        record['Company'] = company
         
         #print record, '------------'
         # Finally, save the record to the datastore - 'Name' is our unique key
