@@ -16,11 +16,12 @@ def scrape_dof(url):
         # Set up our data record - we'll need it later
         record = {}
        
-        n = 0
-        for a in row.cssselect("a"):
-            print(n)
-            print(a.get('href'))
-            n = n+1
+        #n = 0
+        #for a in row.cssselect("a"):
+        #    print(n)
+        #    print(a.get('href'))
+        #    n = n+1
+        
         link = row.cssselect("a")
         link1 = link[0].get('href')
         
