@@ -11,7 +11,7 @@ def scrape_dof(url):
     #line below selects all <div class="notice-search-item">
     rows = root.cssselect("div.notice-search-item")
     for row in rows:
-        print row
+        print row.text
         # Set up our data record - we'll need it later
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
