@@ -17,8 +17,9 @@ def scrape_dof(url):
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
         print(a[0].text.encode("utf-8"))
-        print(a[1].text.encode("utf-8"))
-        #company = a[1].text
+        if(a[1])
+            print(a[1].text.encode("utf-8"))
+            company = a[1].text
         
         #repeat process for <span class="right-col"> 
         item_right = row.cssselect("div.right-col")
