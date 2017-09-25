@@ -28,7 +28,7 @@ def scrape_dof(url):
             n = n+1
             
         element = row.cssselect("div")
-        link = element[0].text_content().encode("utf-8")
+        link = element[0].text_content()
         
         record['Title'] = title
         record['Link'] = link
