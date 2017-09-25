@@ -16,11 +16,11 @@ def scrape_dof(url):
         # Set up our data record - we'll need it later
         record = {}
        
-        #n = 0
-        #for div in row.cssselect("div"):
-        #    print(n)
-        #    print(div.text_content().encode("utf-8"))        
-        #    n = n+1
+        n = 0
+        for a in row.cssselect("a"):
+            print(n)
+            print(div.text_content().encode("utf-8"))        
+            n = n+1
             
         element = row.cssselect("div")
         title = element[1].text_content()
