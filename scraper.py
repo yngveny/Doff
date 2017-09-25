@@ -21,7 +21,9 @@ def scrape_dof(url):
             print(n)
             print(a.get('href'))
             n = n+1
-            
+        link = row.cssselect("a")
+        link1 = link[0]
+        
         element = row.cssselect("div")
         title = element[1].text_content()
         klient = element[3].text_content()
@@ -34,6 +36,7 @@ def scrape_dof(url):
         record['Klient'] = klient
         record['Kungj_type'] = kgtype
         record['Kungj_dato'] = kgdato
+        record['Link'] = link1
        
         
         # Finally, save the record to the datastore - 'Name' is our unique key
