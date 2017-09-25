@@ -10,7 +10,7 @@ def scrape_dof(url):
     #line below selects all <div class="notice-search-item">
     rows = root.cssselect("div.notice-search-item")
     for row in rows:
-        #print row
+        print row
         # Set up our data record - we'll need it later
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
@@ -27,7 +27,7 @@ def scrape_dof(url):
         record['Reference'] = ref
         #record['Company'] = company
         
-        print record, '------------'
+        #print record, '------------'
         # Finally, save the record to the datastore - 'Name' is our unique key
         scraperwiki.sqlite.save(["Title"], record)
         
