@@ -24,8 +24,8 @@ def scrape_dof(url):
         
         #record['URL'] = url
         record['Title'] = title
-        record['ref'] = reference
-        record['company'] = company
+        record['Reference'] = ref
+        record['Company'] = company
         
         print record, '------------'
         # Finally, save the record to the datastore - 'Name' is our unique key
