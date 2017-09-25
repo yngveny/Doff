@@ -20,7 +20,7 @@ def scrape_dof(url):
         #repeat process for <span class="right-col"> 
         item_right = row.cssselect("div.right-col")
         ref = item_right[0].text
-        date = item_right[1].text
+        #date = item_right[1].text
         
         #record['URL'] = url
         record['Title'] = title
