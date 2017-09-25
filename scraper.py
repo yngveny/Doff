@@ -19,7 +19,7 @@ def scrape_dof(url):
         n = 0
         for a in row.cssselect("a"):
             print(n)
-            print(a)        
+            print(a).text_content()        
             n = n+1
             
         element = row.cssselect("div")
