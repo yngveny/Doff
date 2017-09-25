@@ -6,12 +6,15 @@ import lxml.html
 # create a new function, which gets passed a variable we're going to call 'url'
 def scrape_dof(url):
     html = scraperwiki.scrape(url)
+    
     #print html
     root = lxml.html.fromstring(html)
+    print root.find_class("div.notice-search-item")
+        
     #line below selects all <div class="notice-search-item">
     rows = root.cssselect("div.notice-search-item")
     for row in rows:
-        print row.find_class("div.notice-search-item")
+        #print row.find_class("div.notice-search-item")
         # Set up our data record - we'll need it later
         record = {}
         a = row.cssselect("a") #grab all <a> tags within our <div>
