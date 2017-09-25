@@ -23,8 +23,8 @@ def scrape_dof(url):
         
         n = 0
         for div in row.cssselect("div"):
-            print(div.text_content().encode("utf-8"))        
             print(n)
+            print(div.text_content().encode("utf-8"))        
             n = n+1
             
         element = row.cssselect("div")
@@ -39,7 +39,7 @@ def scrape_dof(url):
         record['Klient'] = klient
         record['Kungj_type'] = kgtype
         record['Kungj_dato'] = kgdato
-        #record['Company'] = company
+       
         
         # Finally, save the record to the datastore - 'Name' is our unique key
         scraperwiki.sqlite.save(["Dofref"], record)
