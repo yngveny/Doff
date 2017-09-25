@@ -21,7 +21,7 @@ def scrape_dof(url):
         a = row.cssselect("a") #grab all <a> tags within our <div>
         title = a[0].text
         
-        for div in row.cssselect("div")
+        for div in row.cssselect("left-col"):
             print(div.text_content())        
         
         
