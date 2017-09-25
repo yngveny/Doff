@@ -18,8 +18,8 @@ def scrape_dof(url):
         #print(row.classes())
         # Set up our data record - we'll need it later
         record = {}
-        a = row.cssselect("a") #grab all <a> tags within our <div>
-        title = a[0].text
+        #a = row.cssselect("a") #grab all <a> tags within our <div>
+        #title = a[0].text
         
         n = 0
         for div in row.cssselect("div"):
@@ -28,17 +28,23 @@ def scrape_dof(url):
             n = n+1
             
         element = row.cssselect("div")
-        link = element[0].text_content()
+        title = element[0].text_content()
+        klient = element[2].text_content()
+        kgtype = element[3].text_content()
+        dofref = element[5].text_content()
+        kgdato = element[6].text_content()
         
+        record['DofRef'] = dofref
         record['Title'] = title
-        record['Link'] = link
-        #record['Reference'] = ref
+        record['Klient'] = klient
+        record['Kungj_type'] = kgtype
+        record['Kungj_dato'] = kgdato
         #record['Company'] = company
         
         # Finally, save the record to the datastore - 'Name' is our unique key
-        scraperwiki.sqlite.save(["Title"], record)
+        scraperwiki.sqlite.save(["Dofref"], record)
         
-doflist = ['www.doffin.no/Notice?query=&PageNumber=1&PageSize=30&OrderingType=0&OrderingDirection=1&RegionId=&CountyId=&MunicipalityId=&IsAdvancedSearch=false&location=&NoticeType=3&PublicationType=&IncludeExpired=false&Cpvs=&EpsReferenceNr=&DeadlineFromDate=&DeadlineToDate=&PublishedFromDate=&PublishedToDate=']
+doflist = ['www.doffin.no/Notice?query=&PageNumber=1&PageSize=10&OrderingType=0&OrderingDirection=1&RegionId=&CountyId=&MunicipalityId=&IsAdvancedSearch=false&location=&NoticeType=3&PublicationType=&IncludeExpired=false&Cpvs=&EpsReferenceNr=&DeadlineFromDate=&DeadlineToDate=&PublishedFromDate=&PublishedToDate=']
 for url in doflist:
     fullurl = 'http://'+url
     print 'scraping ', fullurl
