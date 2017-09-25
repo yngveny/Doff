@@ -28,11 +28,11 @@ def scrape_dof(url):
             n = n+1
             
         element = row.cssselect("div")
-        title = element[0].text_content()
-        klient = element[2].text_content()
-        kgtype = element[3].text_content()
-        dofref = element[5].text_content()
-        kgdato = element[6].text_content()
+        title = element[1].text_content()
+        klient = element[3].text_content()
+        kgtype = element[4].text_content()
+        dofref = element[6].text_content()
+        kgdato = element[7].text_content()
         
         record['DofRef'] = dofref
         record['Title'] = title
