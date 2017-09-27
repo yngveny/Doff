@@ -43,7 +43,8 @@ def scrape_dof(url):
         # Finally, save the record to the datastore - 'Name' is our unique key
         scraperwiki.sqlite.save(["Dofref"], record)
         
-doflist = ['www.doffin.no/Notice?query=&PageNumber=1&PageSize=20&OrderingType=0&OrderingDirection=1&NoticeType=3&IncludeExpired=false']
+#doflist = ['www.doffin.no/Notice?query=&PageNumber=1&PageSize=20&OrderingType=0&OrderingDirection=1&NoticeType=3&IncludeExpired=false']
+doflist = ['www.doffin.no/Notice?&OrderingType=0&OrderingDirection=1&IsAdvancedSearch=false&IncludeExpired=false&Cpvs=09200000+35110000+44610000+45220000+45230000+51200000+51100000+51800000+71300000+71530000+76000000']
 for url in doflist:
     fullurl = 'http://'+url
     print 'scraping ', fullurl
