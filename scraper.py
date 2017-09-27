@@ -2,6 +2,30 @@
 import scraperwiki
 import urlparse
 import lxml.html
+import smtplib
+
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+ 
+ 
+fromaddr = "dof@dof.com"
+toaddr = "ynny@nli.no"
+msg = MIMEMultipart()
+msg['From'] = fromaddr
+msg['To'] = toaddr
+msg['Subject'] = "Doffin"
+ 
+body = "New doffinn announcements"
+msg.attach(MIMEText(body, 'plain'))
+ 
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.starttls()
+server.login(fromaddr, "Admiral01")
+text = msg.as_string()
+server.sendmail(fromaddr, toaddr, text)
+server.quit()
+
+
 
 # create a new function, which gets passed a variable we're going to call 'url'
 def scrape_dof(url):
@@ -25,11 +49,11 @@ def scrape_dof(url):
         link = row.cssselect("a")
         link1 = link[0].get('href')
         
-        element = row.cssselect("div")
+        dofref = element[6].text_content()
         title = element[1].text_content()
+        element = row.cssselect("div")
         klient = element[3].text_content()
         kgtype = element[4].text_content()
-        dofref = element[6].text_content()
         kgdato = element[7].text_content()
         
         record['DofRef'] = dofref
