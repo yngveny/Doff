@@ -4,27 +4,30 @@ import urlparse
 import lxml.html
 import smtplib
 
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEText import MIMEText
- 
- 
-fromaddr = "yngve.nybakk@gmail.com"
-toaddr = "ynny@nli.no"
-msg = MIMEMultipart()
-msg['From'] = fromaddr
-msg['To'] = toaddr
-msg['Subject'] = "Doffin"
- 
-body = "New doffinn announcements"
-msg.attach(MIMEText(body, 'plain'))
- 
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login(fromaddr, "Admiral01")
-text = msg.as_string()
-server.sendmail(fromaddr, toaddr, text)
-server.quit()
+SERVER = "localhost"
 
+FROM = "sender@example.com"
+TO = ["user@example.com"] # must be a list
+
+SUBJECT = "Hello!"
+
+TEXT = "This message was sent with Python's smtplib."
+
+# Prepare actual message
+
+message = """\
+From: %s
+To: %s
+Subject: %s
+
+%s
+""" % (FROM, ", ".join(TO), SUBJECT, TEXT)
+
+# Send the mail
+
+server = smtplib.SMTP(SERVER)
+server.sendmail(FROM, TO, message)
+server.quit()
 
 
 # create a new function, which gets passed a variable we're going to call 'url'
