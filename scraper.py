@@ -8,7 +8,7 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
  
  
-fromaddr = "dof@dof.com"
+fromaddr = "yngve.nybakk@gmail.com"
 toaddr = "ynny@nli.no"
 msg = MIMEMultipart()
 msg['From'] = fromaddr
