@@ -26,9 +26,9 @@ def scrape_dof(url):
         link = row.cssselect("a")
         link1 = link[0].get('href')
         
+        element = row.cssselect("div")
         dofref = element[6].text_content()
         title = element[1].text_content()
-        element = row.cssselect("div")
         klient = element[3].text_content()
         kgtype = element[4].text_content()
         kgdato = element[7].text_content()
